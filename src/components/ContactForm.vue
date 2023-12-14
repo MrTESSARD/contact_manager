@@ -14,6 +14,7 @@
 </template>
 
 <script>
+import db from '../shared/db'
 export default {
     data () {
         
@@ -31,6 +32,11 @@ export default {
     methods:{
         createContact(){
             console.log("createContact", this.contact)
+            db.create(this.contact)
+            .then(data=>{
+                console.log("data",data)
+            })
+            .catch(error=>console.log(error))
         }
     }
 }
