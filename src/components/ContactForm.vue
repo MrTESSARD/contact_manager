@@ -1,7 +1,7 @@
 <template>
     <div>
         <h2>Créer un contact</h2>
-<form>
+<form @submit.prevent="createContact">
 
     <input type="test" placeholder="prénom" v-model="contact.firstName"><br>
     <input type="test" placeholder="nom" v-model="contact.lastName"><br>
@@ -26,6 +26,11 @@ export default {
                 phone:"",
 
             }
+        }
+    },
+    methods:{
+        createContact(){
+            console.log("createContact", this.contact)
         }
     }
 }
