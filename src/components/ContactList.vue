@@ -11,29 +11,9 @@
 </template>
 
 <script>
-import db from '@/shared/db.js';
 export default {
-    data() {
-        return {
-            contacts: []
-        }
-    },
-    created() {
-        this.getAllContacts()
-    },
-    methods: {
-        getAllContacts() {
-            db.read().
-                then((snapshot) => {
-                    console.log(snapshot)
-                    this.contacts=snapshot.docs
-                })
-                .catch(error => {
-                    console.error(error)
-                })
-        }
-    }
-
+  props:['contacts']
+    
 }
 </script>
 

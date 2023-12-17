@@ -1,7 +1,7 @@
 <template>
  <div id="app">
 <Contact-form/>
-<Contact-list/>
+<Contact-list :contacts="contacts"/>
 
  </div>
 </template>
@@ -9,8 +9,31 @@
 <script>
 import ContactForm from './components/ContactForm.vue'
 import ContactList from './components/ContactList.vue';
+import db from './shared/db';
 
 export default {
+  data() {
+        return {
+            contacts: []
+        }
+    },
+    
+  created() {
+        this.getAllContacts()
+    },
+    methods: {
+        getAllContacts() {
+            db.read().
+                then((snapshot) => {
+                    console.log(snapshot)
+                    this.contacts=snapshot.docs
+                })
+                .catch(error => {
+                    console.error(error)
+                })
+        }
+    },
+
   name: 'App',
   components: {
     ContactForm,
