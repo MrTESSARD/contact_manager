@@ -2,7 +2,7 @@
   <div id="app">
         <!-- Emmetre un evenement par emit de created -->
     <Contact-form @created="getAllContacts" /> 
-    <Contact-list :contacts="contacts" />
+    <Contact-list @deleteContact="deleteContact"  :contacts="contacts" />
 
   </div>
 </template>
@@ -32,8 +32,19 @@ export default {
         .catch(error => {
           console.error(error)
         })
-    }
-  },
+    },
+  
+  deleteContact(contact){
+    console.log("deleteContact")
+    db.delete(contact.id)
+    .then(()=>{
+      this.getAllContacts()})
+      .catch(error => {
+          console.error(error)
+        })
+   
+
+  },},
 
   name: 'App',
   components: {

@@ -2,7 +2,7 @@
 import 'firebase/firestore';
 import fsConfig from './config';
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, getDocs,addDoc } from 'firebase/firestore/lite';
+import { getFirestore, collection, getDocs,addDoc,deleteDoc,doc } from 'firebase/firestore/lite';
 
 const config = fsConfig;
 
@@ -49,5 +49,15 @@ const db = getFirestore(app);
         return [];
       }
     },
+    async delete(id) {
+      console.log('Contact supprimé avec succès.');
+      try {
+        const contactsCol = collection(db, 'contacts');
+        
+        return await deleteDoc(doc(contactsCol, id));
+      } catch (error) {
+        console.error('Erreur lors de la suppression du contact :', error);
+      }
+    }
    
   };
