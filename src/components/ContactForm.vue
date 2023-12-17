@@ -33,10 +33,17 @@ export default {
         createContact(){
             console.log("createContact", this.contact)
             db.create(this.contact)
-            .then(data=>{
+            .then((data)=>{
                 console.log("data",data)
+                this.resetForm()
             })
             .catch(error=>console.log(error))
+        },
+        resetForm(){
+            this.contact.firstName=''
+            this.contact.lastName=''
+            this.contact.email=''
+            this.contact.phone=''
         }
     }
 }

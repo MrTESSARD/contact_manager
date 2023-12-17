@@ -30,8 +30,9 @@ const db = getFirestore(app);
     async create(contact) {
       try {
         const contactsCol = collection(db, 'contacts');
-        await addDoc(contactsCol, contact);
         console.log('Contact ajouté avec succès.');
+       return await addDoc(contactsCol, contact);
+        // return contactList;
       } catch (error) {
         console.error('Erreur lors de l\'ajout du contact :', error);
       }
@@ -47,4 +48,5 @@ const db = getFirestore(app);
         return [];
       }
     },
+   
   };
