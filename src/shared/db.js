@@ -41,8 +41,9 @@ const db = getFirestore(app);
       try {
         const contactsCol = collection(db, 'contacts');
         const contactsSnapshot = await getDocs(contactsCol);
-        const contactList = contactsSnapshot.docs.map(doc => doc.data());
-        return contactList;
+        // const contactList = contactsSnapshot.docs.map(doc => doc.data());
+        // console.log("contactsSnapshot",contactsSnapshot)
+        return contactsSnapshot;
       } catch (error) {
         console.error('Erreur lors de la lecture des contacts :', error);
         return [];
