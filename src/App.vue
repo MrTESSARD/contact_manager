@@ -1,9 +1,10 @@
 <template>
- <div id="app">
-<Contact-form/>
-<Contact-list :contacts="contacts"/>
+  <div id="app">
+        <!-- Emmetre un evenement par emit de created -->
+    <Contact-form @created="getAllContacts" /> 
+    <Contact-list :contacts="contacts" />
 
- </div>
+  </div>
 </template>
 
 <script>
@@ -13,32 +14,32 @@ import db from './shared/db';
 
 export default {
   data() {
-        return {
-            contacts: []
-        }
-    },
-    
+    return {
+      contacts: []
+    }
+  },
+
   created() {
-        this.getAllContacts()
-    },
-    methods: {
-        getAllContacts() {
-            db.read().
-                then((snapshot) => {
-                    console.log(snapshot)
-                    this.contacts=snapshot.docs
-                })
-                .catch(error => {
-                    console.error(error)
-                })
-        }
-    },
+    this.getAllContacts()
+  },
+  methods: {
+    getAllContacts() {
+      db.read().
+        then((snapshot) => {
+          console.log(snapshot)
+          this.contacts = snapshot.docs
+        })
+        .catch(error => {
+          console.error(error)
+        })
+    }
+  },
 
   name: 'App',
   components: {
     ContactForm,
     ContactList
-}
+  }
 }
 </script>
 

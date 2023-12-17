@@ -11,7 +11,7 @@
 <button type="submit">Créer</button>
 </form>
     </div>
-</template>
+</template> 
 
 <script>
 import db from '../shared/db'
@@ -35,6 +35,7 @@ export default {
             db.create(this.contact)
             .then((data)=>{
                 console.log("data",data)
+                this.$emit('created')
                 this.resetForm()
             })
             .catch(error=>console.log(error))
