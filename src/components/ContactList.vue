@@ -1,5 +1,7 @@
 <template>
     <div>
+        <contact-details :contact='contact' @deleteContact="deleteContact"  v-for='contact in contacts' :key='contact.id'>
+        </contact-details>
         <ul>
             <li v-for="contact in contacts" :key="contact.id">
                 {{ contact.data().firstName }} {{ contact.data().lastName }}
@@ -12,15 +14,17 @@
 </template>
 
 <script>
+import ContactDetails from './ContactDetails.vue'
 export default {
+    components: { ContactDetails },
     props: ['contacts'],
-    methods:{
+    methods: {
         deleteContact(contact) {
             this.$emit('deleteContact', contact)
-        
-    },
 
-},
+        },
+
+    },
 }
 </script>
 
