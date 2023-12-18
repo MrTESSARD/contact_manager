@@ -1,15 +1,23 @@
 <template>
-    <div class="card" style="width: 18rem;">
-        <div class="card-body">
-            <h5 class="card-title">{{contact.data().firstName}} {{contact.data().lastName}}</h5>
-            <h6 class="card-subtitle mb-2 text-body-secondary">{{contact.data().email}}</h6>
-            <p class="card-text">Numéro de telephone : {{contact.data().phone}}</p>
-           
-            <button class="btn btn-sm btn-warning" @click="updateContact(contact)" >Modifier</button>
-            <button class="btn btn-sm btn-danger" @click="deleteContact(contact)" >Delete</button>
-            
-        </div>
+     <div v-if="!isInEditMode" class="card" style="width: 18rem;margin-bottom: 10px;">
+    <div class="card-body">
+      <router-link :to="{ name: 'contact', params: { id: contact.id } }">
+        <h5 class="card-title">{{contact.data().lastName}} {{contact.data().firstName}}</h5>
+      </router-link>
+      <h6 class="card-subtitle mb-2 text-muted">{{contact.data().email}}</h6>
+      <p class="card-text">numéro de téléphone : {{contact.data().phone}}</p>
+      <button
+        class="btn btn-sm btn-warning"
+        @click="editContact">
+        modifier
+      </button>
+      <button
+        class="btn btn-sm btn-danger"
+        @click="$emit('deleteContact', contact)">
+        supprimer
+      </button>
     </div>
+  </div>
 
     <div v-if="isInEditMode" class="card" style="width: 18rem;margin-bottom: 10px;">
     <div class="card-body">
@@ -66,6 +74,13 @@ export default {
             this.$emit('updateContact', contact)
     
         },
+        saveEdit() {
+      this.$emit('saveEdit', this.contactCopy);
+      this.isInEditMode = false;
+    },
+        cancelEdit() {
+      this.isInEditMode = false;
+    },
     }
 
 

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <contact-details :contact='contact' @deleteContact="deleteContact"  v-for='contact in contacts' :key='contact.id'>
+        <contact-details :contact='contact' @deleteContact="deleteContact"  @updateContact="updateContact"  @saveEdit="saveEdit"  v-for='contact in contacts' :key='contact.id'>
         </contact-details>
         <ul>
             <li v-for="contact in contacts" :key="contact.id">
