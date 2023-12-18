@@ -66,10 +66,7 @@ export default {
       };
       this.isInEditMode = true;
     },
-        deleteContact(contact) {
-            this.$emit('deleteContact', contact)
-    
-        },
+        
         updateContact(contact) {
             this.$emit('updateContact', contact)
     
@@ -87,4 +84,8 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style  scoped>
+button{
+    margin-right: 5px;
+}
+</style>

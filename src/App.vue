@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-        <!-- Emmetre un evenement par emit de created -->
-    <Contact-form @created="getAllContacts" /> 
-    <Contact-list @deleteContact="deleteContact"  :contacts="contacts" />
+    <!-- Emmetre un evenement par emit de created -->
+    <Contact-form @created="getAllContacts" />
+    <Contact-list @deleteContact="deleteContact" @saveEdit="saveEdit" :contacts="contacts" />
 
   </div>
 </template>
@@ -33,18 +33,32 @@ export default {
           console.error(error)
         })
     },
-  
-  deleteContact(contact){
-    console.log("deleteContact")
-    db.delete(contact.id)
-    .then(()=>{
-      this.getAllContacts()})
-      .catch(error => {
+
+    deleteContact(contact) {
+      console.log("deleteContact")
+      db.delete(contact.id)
+        .then(() => {
+          this.getAllContacts()
+        })
+        .catch(error => {
           console.error(error)
         })
-   
 
-  },},
+
+    },
+    saveEdit(editedContact) {
+      console.log("editedContact")
+      db.update(editedContact.id, editedContact) // Passer les nouvelles données de contact
+        .then(() => {
+          this.getAllContacts()
+        })
+        .catch(error => {
+          console.error(error)
+        })
+
+
+    },
+  },
 
   name: 'App',
   components: {
