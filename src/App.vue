@@ -1,15 +1,24 @@
 <template>
   <div id="app">
-    <!-- Emmetre un evenement par emit de created -->
-    <Contact-form @created="getAllContacts" />
-    <Contact-list @deleteContact="deleteContact" @saveEdit="saveEdit" :contacts="contacts" />
 
+    <div id="nav">
+    <router-link to="/">Home</router-link> |
+    <router-link to="/about">About</router-link>
+  </div>
+  
+  
+  <!-- Emmetre un evenement par emit de created -->
+  <Contact-form @created="getAllContacts" />
+  <Contact-list @deleteContact="deleteContact" @saveEdit="saveEdit" :contacts="contacts" />
+  
+  <router-view/>
   </div>
 </template>
+<!-- eslint-disable vue/no-unused-components -->
 
 <script>
-import ContactForm from './components/ContactForm.vue'
-import ContactList from './components/ContactList.vue';
+import ContactForm from './components/ContactForm.vue'// eslint-disable-line vue/no-unused-components
+import ContactList from './components/ContactList.vue';// eslint-disable-line vue/no-unused-components
 import db from './shared/db';
 
 export default {
