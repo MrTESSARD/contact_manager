@@ -3,6 +3,7 @@
 
     <router-link to="/" exact>Home</router-link> |
         <router-link to="/about">About</router-link>
+        
       <router-view/>
 
   </div>

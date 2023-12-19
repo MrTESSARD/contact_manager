@@ -1,6 +1,10 @@
 <template>
      <div v-if="!isInEditMode" class="card" style="width: 18rem;margin-bottom: 10px;">
     <div class="card-body">
+        <router-link :to="{name:'contact', params:{id:contact.id}}">
+            <h5 class="card-subtitle mb-2 text-muted">{{contact.data().lastName}} {{contact.data().firstName}}</h5>
+
+        </router-link>
       
       <h6 class="card-subtitle mb-2 text-muted">{{contact.data().email}}</h6>
       <p class="card-text">numéro de téléphone : {{contact.data().phone}}</p>
