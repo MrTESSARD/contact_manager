@@ -76,7 +76,9 @@ export default {
         cancelEdit() {
       this.isInEditMode = false;
     },
-    }
+    },
+    
+  emits: ['deleteContact', 'updateContact', 'saveEdit'],
 
 
 }

@@ -1,7 +1,7 @@
 <template>
   <div id="app">
 
-    <router-link to="/">Home</router-link> |
+    <router-link to="/" exact>Home</router-link> |
         <router-link to="/about">About</router-link>
       <router-view/>
 
@@ -22,5 +22,10 @@ export default {}
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+
+.router-link-active{
+  color:orange
 }
 </style>
