@@ -3,7 +3,7 @@
         <contact-details 
         :contact='contact' 
         @deleteContact="deleteContact"  
-        @updateContact="updateContact"  
+       
         @saveEdit="saveEdit"  
         v-for='contact in contacts' :key='contact.id'>
         </contact-details>
